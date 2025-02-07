@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script type="module">
+        import { createApp } from "./node_modules/vue/dist/vue.esm-browser.prod.js";
+
+        const FormulaireInscription = {
+            data() {
+                return {
+                    nom: "",
+                    email: "",
+                    telephone: "",
+                    adresse: "",
+                    motDePasse: ""
+                };
+            },
+            methods: {
+                soumettreFormulaire(event) {
+                    event.preventDefault();
+                    console.log("Nom complet :", this.nom);
+                    console.log("Email :", this.email);
+                    console.log("Téléphone :", this.telephone);
+                    console.log("Adresse :", this.adresse);
+                }
+            },
+            template: `
+                <form @submit="soumettreFormulaire">
+                    <div>
+                        <label for="nom">Nom :</label>
+                        <input id="nom" type="text" v-model="nom" placeholder="Entrez votre nom">
+                    </div>
+                    <div>
+                        <label for="email">Email :</label>
+                        <input id="email" type="email" v-model="email" placeholder="Entrez votre email">
+                    </div>
+                    <div>
+                        <label for="telephone">Téléphone :</label>
+                        <input id="telephone" type="tel" v-model="telephone" placeholder="Entrez votre numéro de téléphone">
+                    </div>
+                    <div>
+                        <label for="adresse">Adresse :</label>
+                        <input id="adresse" type="text" v-model="adresse" placeholder="Entrez votre adresse">
+                    </div>
+                    <div>
+                        <label for="motDePasse">Mot de passe :</label>
+                        <input id="motDePasse" type="password" v-model="motDePasse" placeholder="Choisissez un mot de passe">
+                    </div>
+                    <button type="submit">S'inscrire</button>
+                </form>
+            `
+        };
+
+        createApp(FormulaireInscription).mount('#app');
+    </script>
+</body>
+</html>
